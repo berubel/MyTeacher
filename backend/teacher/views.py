@@ -34,5 +34,10 @@ class RegisterClassAPIView(APIView):
             lesson.save()
             lesson_serializer = ClassSerializer(lesson, many=False)
             return Response(lesson_serializer.data, status=HTTP_201_CREATED)
-        return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)
+        return Response(
+            {
+            "message": "There were validation errors", 
+            "errors": serializer.errors
+            }, 
+            status=HTTP_400_BAD_REQUEST)
 
