@@ -6,10 +6,10 @@ class TeacherSerializer(serializers.ModelSerializer):
         model = Teacher
         fields = '__all__'
 
-class RegisterClass(serializers.Serializer):
+class RegisterClassSerializer(serializers.Serializer):
     class Meta:
-        name = serializers.CharField(max_length=100, null=False, blank=False)
-        email = serializers.EmailField(max_length=255, null=False, blank=False)
+        name = serializers.CharField(max_length=100)
+        email = serializers.EmailField(max_length=255)
 
 class ClassSerializer(serializers.ModelSerializer):
     class Meta:
