@@ -15,7 +15,7 @@ class Teacher(models.Model):
 
 class Class(models.Model):
     name = models.CharField(max_length=100, null=False, blank=False)
-    email = models.EmailField(max_length=100, null=False, blank=False)
+    email = models.EmailField(max_length=255, null=False, blank=False)
     teacher = models.ForeignKey(
         to=Teacher, 
         on_delete=models.CASCADE, 
