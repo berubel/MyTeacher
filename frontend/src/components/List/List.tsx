@@ -1,5 +1,6 @@
 import { Button } from "@mui/material";
 import { Teacher } from "../../@types/teacher";
+import { FormatterService } from "../../services/FormatterService";
 import {
     Description,
     EmptyList,
@@ -26,13 +27,9 @@ const List = (props: ListProps) => {
                             <Informations>
                                 <Name>{teacher.name}</Name>
                                 <Value>
-                                    {teacher.value.toLocaleString("en-US", {
-                                        minimumFractionDigits: 2,
-                                        style: "currency",
-                                        currency: "USD",
-                                    })}
+                                    {FormatterService.monetaryValue(teacher.value)}
                                 </Value>
-                                <Description>{teacher.description}</Description>
+                                <Description>{FormatterService.limitText(teacher.description, 200)}</Description>
                                 <Button sx={{ width: "70%" }}>Book Class</Button>
                             </Informations>
                         </ListItem>
