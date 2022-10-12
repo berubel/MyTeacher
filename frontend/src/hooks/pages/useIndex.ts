@@ -7,6 +7,7 @@ export function useIndex(){
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [selectedTeacher, setSelectedTeacher] = useState<Teacher | null>(null);
+    const [message, setMessage] = useState('');
 
     useEffect(()=> {
         ApiService.get('/teacher/').then((response) =>{
@@ -22,12 +23,12 @@ export function useIndex(){
                     email
                 }).then(() => {
                     setSelectedTeacher(null);
-                    alert('Registered sucessfully!')
+                    setMessage('Registered sucessfully!')
                 }).catch((error) =>{
-                    alert(error.response?.data.message);
+                    setMessage(error.response?.data.message);
                 })
             } else {
-                alert('Fill in the fields correctly.');
+                setMessage('Fill in the fields correctly.');
             }
         }
     }
@@ -44,6 +45,8 @@ export function useIndex(){
         setEmail,
         selectedTeacher,
         setSelectedTeacher,
-        bookClass
+        bookClass,
+        message,
+        setMessage
     }
 }
