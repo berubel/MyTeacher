@@ -8,7 +8,6 @@ class TeacherSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class RegisterClassSerializer(serializers.Serializer):
-    class Meta:
         name = serializers.CharField(max_length=100)
         email = serializers.EmailField(max_length=255)
 

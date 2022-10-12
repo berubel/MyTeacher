@@ -22,13 +22,11 @@ class RegisterClassAPIView(APIView):
     def post(self, request, id, format=None):
         teacher = get_object_or_404(Teacher, id=id)
         serializer = RegisterClassSerializer(data=request.data)
-        name = request.data.get("name")
-        email = request.data.get("email")
 
         if serializer.is_valid():
             lesson = Class(
-                name=name,
-                email=email,
+                name=serializer.validated_data.get('name'),
+                email=serializer.validated_data.get('email'),
                 teacher=teacher,
             )
             lesson.save()
