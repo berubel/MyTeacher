@@ -15,6 +15,10 @@ export function useIndex(){
         })
     }, []);
 
+    useEffect(() => {
+        cleanForm();
+    }, [selectedTeacher])
+
     function bookClass(){
         if(selectedTeacher !== null){
             if(validateClassData()){
@@ -35,6 +39,11 @@ export function useIndex(){
 
     function validateClassData(){
         return name.length > 0 && email.length > 0;
+    }
+
+    function cleanForm(){
+        setName('');
+        setEmail('');
     }
 
     return {
