@@ -14,6 +14,28 @@ export function useIndex(){
         })
     }, []);
 
+    function bookClass(){
+        if(selectedTeacher !== null){
+            if(validateClassData()){
+                ApiService.post('teacher/' + selectedTeacher.id + '/classes', {
+                    name, 
+                    email
+                }).then(() => {
+                    setSelectedTeacher(null);
+                    alert('Registered sucessfully!')
+                }).catch((error) =>{
+                    alert(error.response?.data.message);
+                })
+            } else {
+                alert('Fill in the fields correctly.');
+            }
+        }
+    }
+
+    function validateClassData(){
+        return name.length > 0 && email.length > 0;
+    }
+
     return {
         teacherList,
         name,
@@ -21,6 +43,7 @@ export function useIndex(){
         email,
         setEmail,
         selectedTeacher,
-        setSelectedTeacher
+        setSelectedTeacher,
+        bookClass
     }
 }
