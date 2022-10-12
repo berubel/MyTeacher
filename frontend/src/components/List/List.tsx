@@ -14,6 +14,7 @@ import {
 
 interface ListProps {
     teachers: Teacher[];
+    onSelect: (teacher: Teacher) => void
 }
 
 const List = (props: ListProps) => {
@@ -30,7 +31,7 @@ const List = (props: ListProps) => {
                                     {FormatterService.monetaryValue(teacher.value)}
                                 </Value>
                                 <Description>{FormatterService.limitText(teacher.description, 200)}</Description>
-                                <Button sx={{ width: "70%" }}>Book Class</Button>
+                                <Button onClick = {() => props.onSelect(teacher)} sx={{ width: "70%" }}>Book Class</Button>
                             </Informations>
                         </ListItem>
                     ))}
