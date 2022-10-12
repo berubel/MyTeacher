@@ -5,7 +5,7 @@ import List from '../src/components/List/List'
 import { useIndex } from '../src/hooks/pages/useIndex'
 
 const Home: NextPage = () => {
-  const {teacherList} = useIndex();
+  const {teacherList, name, setName, email, setEmail} = useIndex();
 
   return (
    <div>
@@ -19,6 +19,8 @@ const Home: NextPage = () => {
               label="Name"
               type= "text"
               fullWidth
+              value={name}
+              onChange={(e) => setName(e.target.value)}
             />
           </Grid>
           <Grid item xs={12}>
@@ -26,6 +28,8 @@ const Home: NextPage = () => {
               label="Email"
               type= "text"
               fullWidth
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
             </Grid>
         </Grid>
